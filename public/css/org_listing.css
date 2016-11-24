@@ -1,0 +1,62 @@
+
+.org_container {
+    background-color:white;
+    width:700px;
+    text-align:left;
+    display: flex;
+    align-items: center;
+    color:gray;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid lightgray;
+    margin:10px;
+}
+
+.org_logo_container {
+    display:inline-block;
+    float:left;
+    margin:5px;
+    padding:5px;
+}
+
+.org_logo {
+    width:150px;
+}
+
+.org_details_container {
+    width:400px;
+    margin:5px;
+    padding:5px;
+    text-align:left;
+    vertical-align:middle;
+
+}
+
+.org_details_name {
+    font-size:36px;
+    padding:0px;
+    margin:0px;
+}
+
+.org_details_established {
+    font-size:10px;
+}
+
+.org_details_hr {
+    margin: 0;
+    margin-top:5px;
+    margin-bottom:5px;
+    padding:0;
+}
+
+.org_details_cause_list {
+    font-size:10px;
+    padding:0px;
+    margin:0px;
+}
+
+.org_details_revenue {
+    font-size:10px;
+    padding:0px;
+    margin:0px;
+}

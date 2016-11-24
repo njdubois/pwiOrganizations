@@ -1,0 +1,79 @@
+body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    margin:0px;
+    padding:0px;
+    background-color:#f9f9f9;
+}
+
+
+.header_banner {
+    width:100%;
+    height:400px;
+
+    background-image:url('../images/Home_Banner.jpg');
+    background-size: 100% 100%;
+}
+
+
+.green_button {
+    background-color:#35db55;
+    color:white;
+    padding:10px;
+    padding-left:50px;
+    padding-right:50px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: 0px solid lightgray;
+    outline:0;
+    font-size:18px;
+    margin:5px;
+
+    text-decoration:none;
+
+    -webkit-transition: color .2s; /* Safari */
+    transition: color .2s;
+
+}
+
+.green_button:hover {
+    cursor:pointer;
+    color:gray;
+
+    -webkit-transition: color .2s; /* Safari */
+    transition: color .2s;
+}
+
+
+.default_input {
+    margin-top:5px;
+    margin-bottom:5px;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-left:2px;
+    font-size:16px;
+}
+.default_select {
+    width:400px;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-left:2px;
+    font-size:16px;
+    background-color:white;
+}
+
+
+
+
+
+.error_text {
+    text-align:center;
+    color:red;
+    font-size:28px;
+}
+
+/*Bootstrap overrides*/
+.navbar {
+
+     margin-bottom: 0px;
+
+}

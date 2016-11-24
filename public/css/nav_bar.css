@@ -1,0 +1,22 @@
+/* nav bar css */
+
+.nav_container {
+    padding:10px;
+}
+
+.nav_logo_img {
+
+}
+
+.nav_menu_container {
+    padding:10px;
+    margin:0;
+    display:inline-block;
+    float:right;
+}
+
+.nav_menu_container a {
+    color:#33aef4;
+    text-decoration:none;
+}
+
