@@ -16,7 +16,8 @@ class AuthUser
     public function handle($request, Closure $next)
     {
         if (session("loggedUser") == "") {
-            return response('Unauthorized.', 401);
+
+            abort(401, "Not Authorized.\n\n" . __file__ . " @ Line " . __LINE__);
         }
 
         return $next($request);

@@ -7,7 +7,7 @@
 @section('body_content')
     <div class="admin_body_div">
         <p class="error_text">
-            404, Not Found.
+            401, You are not authorized to view this page.  Please log in.
         </p>
         @if(env("APP_DEBUG") == true)
             {{$exception->getMessage()}}

@@ -14,7 +14,7 @@ class home extends Controller
         $organizations = new OrganizationsClass();
 
         return view('index')
-            ->with("allOrganizations",  $organizations->getAllOrganizations() )
+            ->with("allOrganizations",  $organizations->collectionOfOrganizationsToOutputArray( $organizations->getAllOrganizations() ));
         ;
     }
 }

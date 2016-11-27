@@ -5,31 +5,31 @@
         <div>
             <div class="org_container">
                 <div class="org_logo_container">
-                    <img src="../images/{{ $anOrganization['logo_filename'] }}" class="org_logo" />
+                    <img src="../images/logos/{{ $anOrganization['logo_filename'] }}" class="org_logo" />
                 </div>
 
                 <div class="org_details_container">
-                    <div class="org_details_name">
+                    <p class="org_details_name">
                         {{ $anOrganization['name'] }}
-                    </div>
-                    <div class="org_details_established">
+                    </p>
+                    <p class="org_details_established">
                         EST. {{ $anOrganization['established'] }}
-                    </div>
+                    </p>
                     <hr class="org_details_hr" />
-                    <div class="org_details_cause_list">
+                    <p class="org_details_cause_list">
                         CAUSES: {{ implode(", ", $anOrganization['causes']) }}
-                    </div>
-                    <div class="org_details_revenue">
+                    </p>
+                    <p class="org_details_revenue">
                         REVENUE RANGE: {{ $anOrganization['revenue'] }}
-                    </div>
+                    </p>
                 </div>
-                @if (isset($admin) && $admin)
-                    <a class="green_button" href="{{ route('adminOrganizationEdit', [ "organization_id" => $anOrganization['id'] ] ) }}">
-                        EDIT
-                    </a>
-                @endif
-            </div>
 
+            </div>
+            @if (isset($admin) && $admin)
+                <a class="green_button" href="{{ route('adminOrganizationEdit', [ "organization_id" => $anOrganization['id'] ] ) }}">
+                    EDIT
+                </a>
+            @endif
         </div>
     @endforeach
 

@@ -6,13 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-
         @yield("extraJavascript")
 
-
-        {{--<link rel="stylesheet" href="/css/nav_bar.css">--}}
         <link rel="stylesheet" href="/css/app.css">
-        <link rel="stylesheet" href="/css/default_layout.css">
+        <link rel="stylesheet" href="/css/all.css">
         @yield("extraCss")
 
 

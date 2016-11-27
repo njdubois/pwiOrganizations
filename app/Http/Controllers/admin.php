@@ -10,6 +10,8 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+
 
 class admin extends Controller
 {
@@ -19,7 +21,7 @@ class admin extends Controller
 
 
         return view('admin_home')
-            ->with("allOrganizations", $organizations->getAllOrganizations() )
+            ->with("allOrganizations", $organizations->collectionOfOrganizationsToOutputArray( $organizations->getAllOrganizations() ))
             ->with("admin", true)
             ;
     }
@@ -35,7 +37,7 @@ class admin extends Controller
         $revenues = new RevenuesClass();
 
         return view('createOrganization')
-            ->with("organizationDetails", [])
+            ->with("organizationDetails", null)
             ->with('allCauses', $causes->getAllCauses())
             ->with('allRevenues', $revenues->getAllRevenues())
         ;
@@ -48,8 +50,25 @@ class admin extends Controller
      * method: POSTS
      *
      */
-    public function saveNewOrganization() {
+    public function saveNewOrganization(Request $request) {
 
+
+        $v = Validator::make($request->all(), [
+            'logo_file' => 'required|mimes:jpeg,jpg,png',
+        ]);
+
+        if ($v->fails())
+        {
+            return redirect()->back()->withErrors($v->errors());
+        }
+
+        $organizations = new OrganizationsClass();
+
+        if ( ! $organizations->saveOrganizationCreate($request) ) {
+            return "Create Error";
+        }
+
+        return $this->index();
     }
 
 
@@ -59,14 +78,16 @@ class admin extends Controller
      * Method: GET
      *
      */
-    public function editOrganization($organization_id) {
+    public function editOrganization($organizationId) {
         $organizations = new OrganizationsClass();
+
+        $organizationsArray = $organizations->anOrganizationToArray($organizations->getAnOrganization($organizationId) );
 
         $causes = new CausesClass();
         $revenues = new RevenuesClass();
 
         return view('editOrganization')
-            ->with("organizationDetails", $organizations->getAnOrganization($organization_id))
+            ->with("organizationDetails", $organizationsArray)
             ->with('allCauses', $causes->getAllCauses())
             ->with('allRevenues', $revenues->getAllRevenues())
         ;
@@ -77,21 +98,19 @@ class admin extends Controller
      * Saves the incoming organization update
      * submit
      * method: POST
-     * @param $organization_id
+     * @param $organizationId
      * @param Request $request
-     * @return $this
+     * @return String or View
      */
-    public function saveEditOrganization($organization_id, Request $request) {
+    public function saveEditOrganization($organizationId, Request $request) {
+
         $organizations = new OrganizationsClass();
 
-        $causes = new CausesClass();
-        $revenues = new RevenuesClass();
+        if ( ! $organizations->saveOrganizationUpdate($organizationId, $request) ) {
+            return "Update Error";
+        }
 
-        return view('editOrganization')
-            ->with("organizationDetails", $organizations->getAnOrganization($organization_id))
-            ->with('allCauses', $causes->getAllCauses())
-            ->with('allRevenues', $revenues->getAllRevenues())
-        ;
+        return $this->editOrganization($organizationId);
     }
 
 
@@ -110,7 +129,7 @@ class admin extends Controller
             return redirect("/admin");
         }
 
-        return null;
+        return redirect("/");
 
     }
 

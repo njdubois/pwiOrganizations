@@ -34,7 +34,7 @@ class RevenuesClass
         $revenue = Revenue::find($revenueId);
 
         if (! $revenue ) {
-            abort(404, 'Revenue Not Found.');
+            abort(404, "Revenue Not Found.\n\n" . __file__ . " @ Line " . __LINE__);
         }
 
         return $this->aRevenueToArray($revenue);

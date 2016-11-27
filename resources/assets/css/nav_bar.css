@@ -1,5 +1,19 @@
 /* nav bar css */
 
+.logoLeft {
+    font-weight :100;
+    color:#33aef4;
+}
+
+.logoMiddle {
+    color:#33aef4;
+}
+
+.logoRight {
+    font-weight:800;
+    color:#33aef4;
+}
+
 .nav_container {
     padding:10px;
 }

@@ -1,8 +1,7 @@
 @extends('parts.layouts.admin_layout')
 
 @section("extraCss")
-    <link rel="stylesheet" href="/css/admin.css">
-    <link rel="stylesheet" href="/css/org_listing.css">
+
 @endsection
 
 @section('body_content')

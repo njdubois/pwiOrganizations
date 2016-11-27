@@ -37,8 +37,8 @@ body {
 
 .green_button:hover {
     cursor:pointer;
-    color:gray;
-
+    color:#33aef4;
+    text-decoration:none;
     -webkit-transition: color .2s; /* Safari */
     transition: color .2s;
 }
@@ -62,7 +62,9 @@ body {
 }
 
 
-
+.menu_link {
+    color:#33aef4;
+}
 
 
 .error_text {

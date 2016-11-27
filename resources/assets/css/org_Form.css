@@ -45,5 +45,9 @@
 .cause_checkbox_container {
     display:inline-block;
     width:100px;
-    background-color:white;
+    background-color:gray;
+    color:lightgray;
+    cursor:pointer;
+    font-weight:400;
+
 }

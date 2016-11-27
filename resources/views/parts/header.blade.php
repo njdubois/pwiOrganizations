@@ -1,42 +1,5 @@
-{{--<div class="nav_container">--}}
-    {{--<a class="" href="{{ route('home') }}">--}}
-        {{--<img src="/images/header_logo.png" class="nav_logo_img" />--}}
-    {{--</a>--}}
 
-    {{--<div class="nav_menu_container">--}}
-        {{--<a href="{{ route('admin') }}">LOG IN</a>--}}
-
-        {{--<ol>--}}
-            {{--<li class="dropdown" id="menu1">--}}
-                {{--<a data-toggle="dropdown" href="#">--}}
-                    {{--LOG IN--}}
-                {{--</a>--}}
-                {{--<div class="dropdown-menu">--}}
-                    {{--<form action="" method="post">--}}
-
-                        {{--<input style="margin-top: 8px" type="text" placeholder="Username" />--}}
-                        {{--<input style="margin-top: 8px" type="password" placeholder="Passsword" />--}}
-                        {{--<input class="btn-primary" name="commit" type="submit" value="Log In" />--}}
-
-                    {{--</form>--}}
-                {{--</div>--}}
-            {{--</li>--}}
-        {{--</ol>--}}
-
-    {{--</div>--}}
-
-{{--</div>--}}
-
-
-
-
-
-
-
-
-
-
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" >
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -47,6 +10,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{{ route('home') }}">
+                {{--<span class="logoLeft">PROJECT</span><span class="logoMiddle">WORLD</span><span class="logoRight">IMPACT</span>--}}
                 <img src="/images/header_logo.png"  height="30" class="d-inline-block align-top" alt="" />
             </a>
         </div>
@@ -57,21 +21,21 @@
 
                 @if(session('loggedUser') != "")
                     <li>
-                        <a href="{{ route("admin") }}">
-                            {{ session('loggedUser') }}, welcome!
+                        <a href="{{ route("admin") }}" class="menu_link">
+                           <span class="menu_link">{{ session('loggedUser') }}, WELCOME!</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="{{ route("signOut") }}">
-                            Log Out
+                        <a href="{{ route("signOut") }}" class="menu_link">
+                            <span class="menu_link">LOG OUT</span>
                         </a>
                     </li>
                 @else
                     <li class="dropdown" id="menu1">
 
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
-                            Log In
+                        <a class="menu_link dropdown-toggle " data-toggle="dropdown" href="#menu1">
+                            <span class="menu_link">LOG IN</span>
                         </a>
                         <div class="dropdown-menu">
                             <form style="margin: 0px;padding:10px;" accept-charset="UTF-8" action="{{ route("signIn") }}" method="post">

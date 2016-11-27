@@ -1,10 +1,10 @@
 
 .org_container {
     background-color:white;
-    width:700px;
+display:inline-block;
     text-align:left;
-    display: flex;
-    align-items: center;
+    /*display: flex;*/
+    /*align-items: center;*/
     color:gray;
     -webkit-border-radius: 3px;
     border-radius: 3px;
@@ -14,7 +14,6 @@
 
 .org_logo_container {
     display:inline-block;
-    float:left;
     margin:5px;
     padding:5px;
 }
@@ -24,7 +23,8 @@
 }
 
 .org_details_container {
-    width:400px;
+    display:inline-block;
+    min-width:400px;
     margin:5px;
     padding:5px;
     text-align:left;
@@ -39,7 +39,7 @@
 }
 
 .org_details_established {
-    font-size:10px;
+    font-size:12px;
 }
 
 .org_details_hr {
@@ -50,13 +50,15 @@
 }
 
 .org_details_cause_list {
-    font-size:10px;
+    font-size:12px;
     padding:0px;
     margin:0px;
+    line-height: 2em;
 }
 
 .org_details_revenue {
-    font-size:10px;
+    font-size:12px;
     padding:0px;
     margin:0px;
+    line-height: 2em;
 }
