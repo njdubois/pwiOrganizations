@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: nick
- * Date: 11/23/16
- * Time: 12:42 PM
- */
+
 
 namespace App\Classes;
 
@@ -108,29 +103,23 @@ class OrganizationsClass
     }
 
 
+    /**
+     *
+     * Saves an update from the create/edit organization form.  Syncs cause
+     * organization relationship.
+     *
+     * Method: Post
+     *
+     * @param $organizationId
+     * @param Request $request
+     * @return bool
+     */
     public function saveOrganizationUpdate($organizationId, Request $request) {
 
         $organization = $this->getAnOrganization($organizationId);
-        $date = DateTime::createFromFormat('m/d/Y', $request->input('organizationEstablishedDate'));
+        $organization = $this->getDataFromRequestIntoObject($organization, $request);
 
-
-        if ($request->hasFile('logo_file') && $request->file('logo_file') != "") {
-            $file = $request->file('logo_file');
-
-            $imageName = $date->format('Y-m-d') . "-" . $request->input('organizationName') . '.' . $file->getClientOriginalExtension();
-
-            $request->file('logo_file')->move(
-                base_path() . '/public/images/logos/', $imageName
-            );
-
-            $organization->logo_filename = $imageName;
-        }
-
-
-        $organization->name = $request->input('organizationName');
-        $organization->established = $date->format('Y-m-d');
-        $organization->revenue_id = $request->input('organizationRevenue');
-
+        // Update cause <-> organization pivot table.
         $organization->causes()->sync(  $request->input('cause_list')  );
 
         $organization->save();
@@ -138,16 +127,76 @@ class OrganizationsClass
         return true;
     }
 
+
+    /**
+     * Saves a new organization, it's cause/organization relationships and
+     * any uploaded profile image.
+     *
+     * Method: POST
+     *
+     * @param Request $request
+     * @return bool
+     */
     public function saveOrganizationCreate(Request $request) {
 
         $organization = new Organization;
+        $organization = $this->getDataFromRequestIntoObject($organization, $request);
+
+        // save the new organization first because the indexes need to be there
+        // before the relation can be formed between cause and organization.
+        $organization->save();
+
+        // Now that the database has been updated, "attach" the relation
+        // to causes.
+
+        // build the cause <-> organization relationship records
+        $organization->causes()->attach(  $request->input('cause_list')  );
+
+        return true;
+    }
+
+    /**
+     *
+     * Pulls data from the request saved from the organization create/edit form submit.
+     *
+     * @param $organization
+     * @param Request $request
+     * @return mixed
+     */
+    private function getDataFromRequestIntoObject($organization, Request $request) {
         $date = DateTime::createFromFormat('m/d/Y', $request->input('organizationEstablishedDate'));
 
+        $organization = $this->testAndUploadLogo($organization, $date->format('Y-m-d'), $request);
+
+        $organization->name = $request->input('organizationName');
+        $organization->established = $date->format('Y-m-d');
+        $organization->revenue_id = $request->input('organizationRevenue');
+
+        return $organization;
+    }
+
+
+    /**
+     *
+     * Checks for an file:image in the request.  If found will
+     * create a name based on the organization name and the current date and
+     * then upload and moves the newly named file to the correct location.
+     *
+     * Finally sets the organization model objects logo file name
+     * to the newly uploaded file name and returns the updated
+     * organization object.
+     *
+     * @param $organization
+     * @param $saveDate
+     * @param Request $request
+     * @return mixed
+     */
+    private function testAndUploadLogo($organization, $saveDate, Request $request) {
 
         if ($request->hasFile('logo_file') && $request->file('logo_file') != "") {
             $file = $request->file('logo_file');
 
-            $imageName = $date->format('Y-m-d') . "-" . $request->input('organizationName') . '.' . $file->getClientOriginalExtension();
+            $imageName = $saveDate . "-" . $request->input('organizationName') . '.' . $file->getClientOriginalExtension();
 
             $request->file('logo_file')->move(
                 base_path() . '/public/images/logos/', $imageName
@@ -156,18 +205,8 @@ class OrganizationsClass
             $organization->logo_filename = $imageName;
         }
 
-
-        $organization->name = $request->input('organizationName');
-        $organization->established = $date->format('Y-m-d');
-        $organization->revenue_id = $request->input('organizationRevenue');
-
-
-        $organization->save();
-
-        $organization->causes()->attach(  $request->input('cause_list')  );
-
-
-        return true;
+        return $organization;
     }
+
 
 }

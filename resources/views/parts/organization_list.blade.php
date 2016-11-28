@@ -8,7 +8,7 @@
                     <img src="../images/logos/{{ $anOrganization['logo_filename'] }}" class="org_logo" />
                 </div>
 
-                <div class="org_details_container">
+                <div class="bs org_details_container">
                     <p class="org_details_name">
                         {{ $anOrganization['name'] }}
                     </p>
@@ -26,7 +26,7 @@
 
             </div>
             @if (isset($admin) && $admin)
-                <a class="green_button" href="{{ route('adminOrganizationEdit', [ "organization_id" => $anOrganization['id'] ] ) }}">
+                <a class="brand_main_button" href="{{ route('adminOrganizationEdit', [ "organization_id" => $anOrganization['id'] ] ) }}">
                     EDIT
                 </a>
             @endif

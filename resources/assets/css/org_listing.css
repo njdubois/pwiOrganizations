@@ -1,7 +1,7 @@
 
 .org_container {
     background-color:white;
-display:inline-block;
+    display:inline-block;
     text-align:left;
     /*display: flex;*/
     /*align-items: center;*/
@@ -22,14 +22,13 @@ display:inline-block;
     width:150px;
 }
 
+
 .org_details_container {
     display:inline-block;
-    min-width:400px;
     margin:5px;
     padding:5px;
     text-align:left;
     vertical-align:middle;
-
 }
 
 .org_details_name {
@@ -43,9 +42,7 @@ display:inline-block;
 }
 
 .org_details_hr {
-    margin: 0;
-    margin-top:5px;
-    margin-bottom:5px;
+    margin: 5px;
     padding:0;
 }
 

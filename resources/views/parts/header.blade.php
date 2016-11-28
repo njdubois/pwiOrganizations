@@ -21,21 +21,21 @@
 
                 @if(session('loggedUser') != "")
                     <li>
-                        <a href="{{ route("admin") }}" class="menu_link">
-                           <span class="menu_link">{{ session('loggedUser') }}, WELCOME!</span>
+                        <a href="{{ route("admin") }}" >
+                           <span class="branding_main_link_color">{{ session('loggedUser') }}, WELCOME!</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="{{ route("signOut") }}" class="menu_link">
-                            <span class="menu_link">LOG OUT</span>
+                        <a href="{{ route("signOut") }}" >
+                            <span class="branding_main_link_color">LOG OUT</span>
                         </a>
                     </li>
                 @else
                     <li class="dropdown" id="menu1">
 
                         <a class="menu_link dropdown-toggle " data-toggle="dropdown" href="#menu1">
-                            <span class="menu_link">LOG IN</span>
+                            <span class="branding_main_link_color">LOG IN</span>
                         </a>
                         <div class="dropdown-menu">
                             <form style="margin: 0px;padding:10px;" accept-charset="UTF-8" action="{{ route("signIn") }}" method="post">
@@ -46,7 +46,7 @@
                                     <input id="email"    name="email"    class="default_input " type="text"     placeholder="Email"      size="30" />
                                     <input id="password" name="password" class="default_input " type="password" placeholder="Passsword"  size="30" />
                                     <div align="center">
-                                      <input class="green_button" name="commit" type="submit" value="Log In" />
+                                      <input class="brand_main_button" name="commit" type="submit" value="Log In" />
                                     </div>
                                 </fieldset>
                             </form>

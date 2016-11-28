@@ -1,0 +1,108 @@
+/*!
+ * Bootstrap v3.3.2 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+/*!
+ * Generated using the Bootstrap Customizer (http://getbootstrap.com/customize/?id=cb5402205e4670452630)
+ * Config saved to config.json and https://gist.github.com/cb5402205e4670452630
+ */
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+
+	/* SMART PHONE START */
+	
+		/* Bootstrap Stuff CSS Start */
+		.container {
+		  margin-right: auto;
+		  margin-left: auto;
+
+		}
+		.row {
+		  margin-left: 5px;
+		  margin-right: 5px;
+		}
+		/* Bootstrap Stuff CSS End  */
+
+		.banner {
+			width:100%;
+			height:100px;
+			background-size: 100% 100%;
+		}
+
+		.bs {
+			width:100%;
+		}
+	/* SMART PHONE END */
+
+
+
+
+@media (min-width: 768px) {
+	/* SMALL TABLET START */
+
+		/* Bootstrap Stuff CSS Start */
+		.container {
+			width: 750px;
+		}
+		/* Bootstrap Stuff CSS End  */
+
+		.banner {
+			width:100%;
+			height:200px;
+			background-size: 100% 100%;
+		}
+
+		.bs {
+			width:400px;
+		}
+
+	/* SMALL TABLET END */
+}
+
+
+
+
+@media (min-width: 992px) {
+	/* BIG TABLET/SMALL DESKTOP START */	
+	
+		/* Bootstrap Stuff CSS Start */
+		.container {
+			width: 970px;
+		}
+		/* Bootstrap Stuff CSS End */
+
+		.banner {
+			width:100%;
+			height:300px;
+			background-size: 100% 100%;
+		}
+
+		.bs {
+			width:400px;
+		}
+	/* BIG TABLET/SMALL DESKTOP END */	
+
+}
+
+@media (min-width: 1300px) {
+	/* BIG DESKTOP START */	
+	
+		/* Bootstrap Stuff CSS Start */
+		.container {
+			width: 1270px;
+		}
+		/* Bootstrap Stuff CSS End  */
+
+		.banner {
+			width:100%;
+			height:400px;
+			background-size: 100% 100%;
+		}
+
+		.bs {
+			width:400px;
+		}
+	/* BIG DESKTOP END */	
+}

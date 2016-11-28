@@ -17,6 +17,8 @@ elixir(function(mix) {
         .copy(bootstrapPath + '/fonts', 'public/fonts')
         .copy(bootstrapPath + '/javascripts/bootstrap.min.js', 'public/js');
 
+    mix.sass('branding.scss');
+
     mix.styles([
         'resources/assets/css'
     ]);

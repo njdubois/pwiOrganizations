@@ -10,6 +10,7 @@
 
         <link rel="stylesheet" href="/css/app.css">
         <link rel="stylesheet" href="/css/all.css">
+        <link rel="stylesheet" href="/css/branding.css">
         @yield("extraCss")
 
 
@@ -26,9 +27,19 @@
     </head>
 
     <body>
-        @include('parts.header')
-        @yield('body_content')
-        @include('parts.footer')
+        <div class="container">
+            <div class="row">
+                @include('parts.header')
+            </div>
+
+            <div class="row">
+                @yield('body_content')
+            </div>
+
+            <div class="row">
+                @include('parts.footer')
+            </div>
+        </div>
     </body>
 
 </html>

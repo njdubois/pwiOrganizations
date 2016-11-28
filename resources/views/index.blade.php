@@ -5,7 +5,7 @@
 @endsection
 
 @section('body_content')
-    <div class="header_banner">
+    <div class="banner header_banner">
 
     </div>
 

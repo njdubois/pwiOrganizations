@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: nick
- * Date: 11/23/16
- * Time: 12:25 PM
- */
 
 namespace App\Classes;
 
@@ -14,21 +8,26 @@ use App\Revenue;
 class RevenuesClass
 {
 
-    private $allRevenues = [
-        "1" => '< $1 Million',
-        "2" => '$1 - $1.5 Million',
-        "3" => '$1.5 - $2 Million',
-        "4" => '$2 - $2.5 Million',
-        "5" => '> $2.5 Million'
-    ];
-
-
+    /**
+     *
+     * Returns a front end friendly array of all revenues in the database.
+     *
+     * @return array
+     */
     public function getAllRevenues() {
         $revenues = Revenue::all();
 
         return $this->collectionOfRevenuesToOutputArray($revenues->all());
     }
 
+    /**
+     *
+     * Gets a revenue record from the database and returns a formatted, front end friendly array of
+     * the data.
+     *
+     * @param $revenueId
+     * @return array
+     */
     public function getRevenueById($revenueId) {
 
         $revenue = Revenue::find($revenueId);
@@ -41,6 +40,15 @@ class RevenuesClass
     }
 
 
+    /**
+     *
+     * Loops through a collection of Revenue records, converting each
+     * record into a front end friendly array, finally returning
+     * that front end friendly array.
+     *
+     * @param $allRevenues
+     * @return array
+     */
     private function collectionOfRevenuesToOutputArray($allRevenues) {
         $revenuesOutputArray = [];
 
@@ -52,6 +60,15 @@ class RevenuesClass
 
     }
 
+    /**
+     *
+     * Formats an array that the front end will expect.  The back end data fields
+     * can change, as long as the final return array stays the same the front end
+     * will just work.
+     *
+     * @param $aRevenue
+     * @return array
+     */
     private function aRevenueToArray($aRevenue) {
 
         $finalOutputArray = [

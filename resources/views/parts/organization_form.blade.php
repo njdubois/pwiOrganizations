@@ -20,19 +20,13 @@
 
             <br />
 
-
-
-
-            <div style='height: 20px;width: 200px; overflow:hidden;'>
+            <div style='height: 0px;width: 0px; overflow:hidden;'>
                 <input  type="file" onchange="readURL(this);" id="logo_file" name="logo_file" value="{{  (isset($organizationDetails['logo_filename']) && $organizationDetails['logo_filename']) ?  $organizationDetails['logo_filename'] : ""  }}" />
-
             </div>
 
+            <label for="logo_file" class="brand_main_button">Upload</label>
 
 
-            <button class="green_button" onclick="document.getElementById('logo_file').click();">
-                Upload
-            </button>
         </div>
 
         <div class="organization_form" >
@@ -60,29 +54,29 @@
                            name="organizationEstablishedDate"
                            class="default_input organization_input establishedDatePicker"
                            size="20"
-                           placeholder="Pick an Established Date"
+                           placeholder="Established Date"
                            value="{{ isset($organizationDetails['established']) ? $organizationDetails['established'] : "" }}"
                     />
                 </div>
 
-                <div class="input_container">
+                <div class="input_container" style="max-width:350px;">
                     <p class="input_label">
                         Causes
                     </p>
 
-                    @foreach($allCauses as $key => $aCauseLabel)
+                    @foreach($allCauses as $aCauseLabel)
                         <label>
-                        <div class="cause_checkbox_container">
-                            <input
-                                    data-parsley-mincheck="1" required
-                                    name="cause_list[]"
-                                    type="checkbox"
-                                    value="{{ $key }}"
-                                    {{ (isset($organizationDetails['causes']) && array_key_exists($key, $organizationDetails['causes']) ) ? "CHECKED" : "" }}
-                            />
-                            {{ $aCauseLabel }}
-
-                        </div></label>
+                            <div class="checkbox_div">
+                                <input
+                                        data-parsley-mincheck="1" required
+                                        name="cause_list[]"
+                                        type="checkbox"
+                                        value="{{ $aCauseLabel['id'] }}"
+                                        {{ (isset($organizationDetails['causes']) && array_key_exists($aCauseLabel['id'], $organizationDetails['causes']) ) ? "CHECKED" : "" }}
+                                />
+                                <span >{{ $aCauseLabel['title'] }}</span>
+                            </div>
+                        </label>
 
 
                     @endforeach
@@ -109,7 +103,7 @@
                 </div>
 
                 <div class="input_container" align="right">
-                    <button type="submit" class="green_button">
+                    <button type="submit" class="brand_main_button">
                         Save
                     </button>
                 </div>

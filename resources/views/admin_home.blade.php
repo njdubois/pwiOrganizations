@@ -13,7 +13,7 @@
         <div align="right">
             <hr />
 
-            <a class="green_button" href="{{ route("adminOrganizationCreate") }}" >
+            <a class="brand_main_button" href="{{ route("adminOrganizationCreate") }}" >
                 CREATE NEW
             </a>
         </div>
